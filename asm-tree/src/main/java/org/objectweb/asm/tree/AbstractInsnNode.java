@@ -115,7 +115,8 @@ public abstract class AbstractInsnNode {
   AbstractInsnNode nextInsn;
 
   /** Bytecode offset of the Bytecode instruction. */
-  int BCI;
+  int bytecodeOffset;
+  
   /**
    * The index of this instruction in the list to which it belongs. The value of this field is
    * correct only when {@link InsnList#cache} is not null. A value of -1 indicates that this
@@ -131,7 +132,7 @@ public abstract class AbstractInsnNode {
   protected AbstractInsnNode(final int opcode) {
     this.opcode = opcode;
     this.index = -1;
-    this.BCI = -1;
+    this.bytecodeOffset = -1;
   }
 
   /**
@@ -183,16 +184,16 @@ public abstract class AbstractInsnNode {
    *
    * @return the bytecode index of this instruction. Returns -1 if not set.
    */
-  public int getBCI() {
-	  return this.BCI;
+  public int getBytecodeOffset() {
+	  return this.bytecodeOffset;
   }
   
   /**
    * Set the bytecode index of this instruction.
    *
    */
-  public void setBCI(int bci) {
-	  this.BCI = bci;
+  public void setBytecodeOffset(int bco) {
+	  this.bytecodeOffset = bco;
   }
   
   /**
