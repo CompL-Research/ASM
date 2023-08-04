@@ -2103,6 +2103,8 @@ public class ClassReader {
 
       // Visit the instruction at this bytecode offset.
       int opcode = classBuffer[currentOffset] & 0xFF;
+      /** Custom change for calculating bytecode offset for the abstract node instruction. */ 
+      int currOffset = currentOffset;
       switch (opcode) {
         case Opcodes.NOP:
         case Opcodes.ACONST_NULL:
@@ -2497,7 +2499,10 @@ public class ClassReader {
         default:
           throw new AssertionError();
       }
-
+      /** Custom change for calculating bytecode offset for the instruction. */
+      /** Set bytecode offset to the corresponding AbstractInsnNode. */
+      methodVisitor.setByteCodeOffset(currOffset - bytecodeStartOffset);
+      
       // Visit the runtime visible instruction annotations, if any.
       while (visibleTypeAnnotationOffsets != null
           && currentVisibleTypeAnnotationIndex < visibleTypeAnnotationOffsets.length

@@ -796,4 +796,16 @@ public abstract class MethodVisitor {
       mv.visitEnd();
     }
   }
+  
+  /**
+   * Sets the byte code offset of last instruction visited by Method Visitor.
+   *
+   * @param offset . This is the offset of last instruction visited by Method Visitor.
+   */
+  public void setByteCodeOffset(final int offset) {
+    if (mv != null) {
+      mv.setByteCodeOffset(offset);
+    }
+  }
+  
 }

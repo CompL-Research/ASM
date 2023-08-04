@@ -114,6 +114,8 @@ public abstract class AbstractInsnNode {
   /** The next instruction in the list to which this instruction belongs. */
   AbstractInsnNode nextInsn;
 
+  /** Bytecode offset of the Bytecode instruction. */
+  int BCI;
   /**
    * The index of this instruction in the list to which it belongs. The value of this field is
    * correct only when {@link InsnList#cache} is not null. A value of -1 indicates that this
@@ -129,6 +131,7 @@ public abstract class AbstractInsnNode {
   protected AbstractInsnNode(final int opcode) {
     this.opcode = opcode;
     this.index = -1;
+    this.BCI = -1;
   }
 
   /**
@@ -174,7 +177,24 @@ public abstract class AbstractInsnNode {
    * @param methodVisitor a method visitor.
    */
   public abstract void accept(MethodVisitor methodVisitor);
-
+  
+  /**
+   * Returns the bytecode index of this instruction.
+   *
+   * @return the bytecode index of this instruction. Returns -1 if not set.
+   */
+  public int getBCI() {
+	  return this.BCI;
+  }
+  
+  /**
+   * Set the bytecode index of this instruction.
+   *
+   */
+  public void setBCI(int bci) {
+	  this.BCI = bci;
+  }
+  
   /**
    * Makes the given visitor visit the annotations of this instruction.
    *

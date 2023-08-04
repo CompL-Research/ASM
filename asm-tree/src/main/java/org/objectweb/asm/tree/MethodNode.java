@@ -769,4 +769,17 @@ public class MethodNode extends MethodVisitor {
     }
     methodVisitor.visitEnd();
   }
+  
+  /**
+   * Sets the bytecode offset of this instruction.
+   *
+   */
+  
+  @Override
+  public void setByteCodeOffset(final int offset) {
+    if (this.instructions.size() > 0) {
+      this.instructions.getLast().setBCI(offset);
+    }
+  }
+  
 }
