@@ -4,4 +4,5 @@
 - Version: 9.6-SNAPSHOT
 - Gradle build.
 - To build use the command: ```gradle jar``` on the parent directory where grade.build file is present.
-- The jar corresponding to each project can be found inside the build/libs folder.
+- The jar corresponding to each project can be found inside the build/libs folder.\
+- Use the ```build-project.sh``` script to build the project and update maven repositories.
